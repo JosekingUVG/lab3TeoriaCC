@@ -2,6 +2,13 @@
 
 ## Ejecución
 
+- Clona el repositorio
+
+```powershell
+git clone https://github.com/angc-labs/CC2019-lab02.git
+cd CC2019-lab02
+```
+
 - Instalacion de uv en terminal
 
 ```powershell

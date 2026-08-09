@@ -1,6 +1,12 @@
 from src.utils import is_operator
 
+
 def eval_postfix(tokens_postfijos):
+    """Evalúa una expresión en notación postfija.
+
+    tokens_postfijos: lista de tokens en notación postfija.
+    Devuelve el resultado numérico de la evaluación.
+    """
     pila = []
  
     for token in tokens_postfijos:

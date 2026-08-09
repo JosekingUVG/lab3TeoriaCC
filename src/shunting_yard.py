@@ -1,9 +1,15 @@
-from src.tokenizer import tokenizer, tokenizer_regex
+from src.tokenizer import  tokenizer_regex
 from src.types import PRECEDENCE_REGEX, RIGHT_ASSOCIATIVE_REGEX
 from src.utils import _must_unstack, is_operator, greater_or_equal_precedence
 
-
+"""
 def infix_to_postfix(expression, show_steps=False):
+    ""Convierte una expresión aritmética infija a notación postfija.
+
+    expression: cadena con la expresión infija.
+    show_steps: si es True, imprime los pasos de la conversión.
+    Devuelve una lista de tokens en notación postfija.
+    ""
     tokens = tokenizer(expression)
 
     operator_stack = []
@@ -49,9 +55,15 @@ def infix_to_postfix(expression, show_steps=False):
         print(f"{'':<10}{'':<15}{' '.join(postfix_output)}")
 
     return postfix_output
-
+"""
 
 def regex_infix_to_postfix(expression, show_steps=False):
+    """Convierte una expresión regular infija a notación postfija.
+
+    expression: cadena con la expresión regular infija.
+    show_steps: si es True, imprime los pasos de la conversión.
+    Devuelve una lista de tokens en notación postfija.
+    """
     tokens = tokenizer_regex(expression)
 
     operator_stack = []

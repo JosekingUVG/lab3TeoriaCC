@@ -3,6 +3,12 @@ from src.shunting_yard import regex_infix_to_postfix
 
 
 def read_postfix_right_to_left(postfix_tokens, print_messages=True):
+    """Lee una expresión postfija de derecha a izquierda y genera mensajes.
+
+    postfix_tokens: lista de tokens en notación postfija.
+    print_messages: si es True, imprime cada mensaje numerado.
+    Devuelve la lista de mensajes generados.
+    """
     n = len(postfix_tokens)
     messages = []
 
@@ -21,13 +27,14 @@ def read_postfix_right_to_left(postfix_tokens, print_messages=True):
 
 
 def regex(regular_expression, show_steps=False):
-    """
-    Convenience function: converts the regular expression to postfix
-    and then explains it by reading it from right to left.
+    """Convierte una expresión regular a postfijo y la explica.
+
+    regular_expression: cadena con la expresión regular infija.
+    show_steps: si es True, muestra los pasos de conversión a postfija.
+    Devuelve la lista de tokens en notación postfija.
     """
     postfix = regex_infix_to_postfix(regular_expression, show_steps)
     print(f"\nRegular expression: {regular_expression}")
     print(f"In postfix:         {''.join(postfix)}")
-    print("Reading from right to left:")
-    read_postfix_right_to_left(postfix)
+
     return postfix

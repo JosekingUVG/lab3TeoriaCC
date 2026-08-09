@@ -1,4 +1,4 @@
-# Laboratorio 2 - CC2019
+# Laboratorio 3 - CC2019
 
 ## Ejecución
 
@@ -29,12 +29,15 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-5. Ejecuta el inciso deseado:
+5. Ejecuta el inciso deseado o los ejemplos de la tarea:
 
 ```powershell
-python inciso_3.py
-python inciso_4.py
+python ejemplos.py
+python inciso_1.py
+python inciso_2.py
 ```
+
+el inciso 2 descarga una imagen llamada afd.png
 
 6. Cuando termines, desactiva el entorno:
 
@@ -57,11 +60,16 @@ Deberías ver algo como:
 (.venv) username@username:~/lab3TeoriaCC/CC2019-lab02$
 ```
 
-Ahora puedes ejecutar normalmente:
+Ejecuta el inciso deseado o los ejemplos de la tarea:
+
 
 ```bash
+python ejemplos.py
 python inciso_1.py
+python inciso_2.py
 ```
+el inciso 2 descarga una imagen llamada afd.png
+
 
 Puedes comprobar qué Python está usando:
 
@@ -93,22 +101,9 @@ pip install -r requirements.txt
 Después ejecuta:
 
 ```bash
-python inciso_1.py
+python inciso_2.py
 ```
 
-Si agregas dependencias nuevas, guarda las librerías instaladas en `requirements.txt`:
-
-```bash
-pip freeze > requirements.txt
-```
-
-Así, al clonar el proyecto en otra máquina, basta con:
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
 
 Una regla práctica: cuando veas `(.venv)` al inicio de tu terminal, estás trabajando dentro del entorno virtual; si no aparece, ejecuta `source .venv/bin/activate`.
 
@@ -141,48 +136,7 @@ El proceso se realiza en tres etapas principales:
    - Cada vez que aparece un operador, se toman los dos valores más recientes de la pila, se aplica la operación y el resultado se vuelve a apilar.
    - Al final queda un único valor, que es el resultado de la expresión original.
 
-## Aplicación en el inciso 3
 
-El inciso 3 se enfoca en expresiones aritméticas. El flujo es el siguiente:
-
-- Se recibe una expresión como `3 * (4 + 5)`.
-- El algoritmo la convierte a notación postfix.
-- Luego se evalúa esa versión postfix para obtener el resultado.
-
-Ejemplo:
-
-- Expresión infix: `3 * (4 + 5)`
-- Expresión postfix: `3 4 5 + *`
-- Resultado: `27`
-
-El programa puede mostrar una tabla de pasos para observar cómo cambia la pila y la salida durante la conversión, lo cual ayuda a comprender mejor el algoritmo.
-
-## Aplicación en el inciso 4
-
-El inciso 4 amplía el mismo algoritmo para trabajar con expresiones regulares. En este caso, los operadores cambian:
-
-- `*`: cerradura de Kleene, operador unario
-- `.`: concatenación
-- `|`: unión o alternancia
-- `(` y `)`: agrupan subexpresiones
-
-La lógica del algoritmo sigue siendo la misma, pero ahora se aplica sobre un conjunto de operadores distintos. El cambio principal es que la expresión regular se convierte también a notación postfix, por ejemplo:
-
-- Expresión infix: `(a|b)*.a.b.b`
-- Expresión postfix: `ab|*a.b.b.`
-
-Una vez obtenida la forma postfix, el programa la interpreta y la explica leyendo de derecha a izquierda para describir cómo se construyó la expresión regular paso a paso.
-
-## Relación entre ambos incisos
-
-Aunque el inciso 3 trabaja con aritmética y el inciso 4 con expresiones regulares, ambos comparten la misma estructura conceptual:
-
-- tokenizar la entrada.
-- convertir de infix a postfix con Shunting Yard.
-- usar una pila para respetar reglas de precedencia y asociatividad.
-- procesar la expresión resultante de forma sistemática.
-
-La diferencia principal está en el conjunto de operadores y en el propósito final: en el inciso 3 se evalúa un valor numérico, mientras que en el inciso 4 se transforma y explica una expresión regular.
 
 ## Referencia utilizada
 

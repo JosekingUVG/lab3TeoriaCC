@@ -12,8 +12,8 @@ PRECEDENCE_REGEX = {
 REGEX_UNARY_OPERATORS = {'*', '+', '?'}
 RIGHT_ASSOCIATIVE_REGEX = set()
 
-#_OPERATOR_DESCRIPTION = {
-#    '.': "Concatenation with",
-#    '|': "Union with",
-#    '*': "Kleene of",
-#}
+_OPERATOR_DESCRIPTION = {
+    '.': "Concatenation with",
+    '|': "Union with",
+    '*': "Kleene of",
+}

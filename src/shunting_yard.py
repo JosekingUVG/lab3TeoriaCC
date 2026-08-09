@@ -1,6 +1,45 @@
-from src.tokenizer import  tokenizer_regex
+from src.tokenizer import tokenizer_regex
 from src.types import PRECEDENCE_REGEX, RIGHT_ASSOCIATIVE_REGEX
-from src.utils import _must_unstack, is_operator, greater_or_equal_precedence
+from src.utils import _must_unstack
+
+
+def expand_regex_extensions(postfix_tokens):
+    """Expande los operadores + y ? en una expresión postfija canónica."""
+    stack = []
+
+    for token in postfix_tokens:
+        if token == '*':
+            if not stack:
+                raise ValueError("Expresión postfija inválida para operador '*'")
+            operand = stack.pop()
+            stack.append(operand + ['*'])
+
+        elif token == '+':
+            if not stack:
+                raise ValueError("Expresión postfija inválida para operador '+'")
+            operand = stack.pop()
+            stack.append(operand + operand + ['*', '.'])
+
+        elif token == '?':
+            if not stack:
+                raise ValueError("Expresión postfija inválida para operador '?'")
+            operand = stack.pop()
+            stack.append(operand + ['ε', '|'])
+
+        elif token in {'.', '|'}:
+            if len(stack) < 2:
+                raise ValueError(f"Expresión postfija inválida para operador '{token}'")
+            right = stack.pop()
+            left = stack.pop()
+            stack.append(left + right + [token])
+
+        else:
+            stack.append([token])
+
+    if len(stack) != 1:
+        raise ValueError("La expresión postfija no se redujo a un único fragmento")
+
+    return stack[0]
 
 """
 def infix_to_postfix(expression, show_steps=False):
@@ -54,6 +93,11 @@ def infix_to_postfix(expression, show_steps=False):
     if show_steps:
         print(f"{'':<10}{'':<15}{' '.join(postfix_output)}")
 
+    postfix_output = expand_regex_extensions(postfix_output)
+
+    if show_steps:
+        print(f"{'Expanded':<10}{'':<15}{' '.join(postfix_output)}")
+
     return postfix_output
 """
 
@@ -106,5 +150,10 @@ def regex_infix_to_postfix(expression, show_steps=False):
 
     if show_steps:
         print(f"{'':<10}{'':<15}{' '.join(postfix_output)}")
+
+    postfix_output = expand_regex_extensions(postfix_output)
+
+    if show_steps:
+        print(f"{'Expanded':<10}{'':<15}{' '.join(postfix_output)}")
 
     return postfix_output

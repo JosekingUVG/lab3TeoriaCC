@@ -1,6 +1,5 @@
 """GENERAR UN ÁRBOL DE SINTAXIS ABSTRACTA A PARTIR DE UNA EXPRESIÓN POSFIJA."""
 from src.shunting_yard import regex_infix_to_postfix
-from src.implements.regex import regex
 from graphviz import Digraph
 
 

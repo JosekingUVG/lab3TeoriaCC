@@ -1,14 +1,14 @@
-from src.types import _OPERATOR_DESCRIPTION
+#from src.types import _OPERATOR_DESCRIPTION
 from src.shunting_yard import regex_infix_to_postfix
 
-
+"""
 def read_postfix_right_to_left(postfix_tokens, print_messages=True):
-    """Lee una expresión postfija de derecha a izquierda y genera mensajes.
+    ""Lee una expresión postfija de derecha a izquierda y genera mensajes.
 
     postfix_tokens: lista de tokens en notación postfija.
     print_messages: si es True, imprime cada mensaje numerado.
     Devuelve la lista de mensajes generados.
-    """
+    ""
     n = len(postfix_tokens)
     messages = []
 
@@ -24,7 +24,7 @@ def read_postfix_right_to_left(postfix_tokens, print_messages=True):
             print(f"{i + 1}. {message}")
 
     return messages
-
+"""
 
 def regex(regular_expression, show_steps=False):
     """Convierte una expresión regular a postfijo y la explica.

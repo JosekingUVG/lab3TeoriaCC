@@ -2,38 +2,115 @@
 
 ## Ejecución
 
-- Clona el repositorio
+### Windows PowerShell
+
+1. Clona el repositorio:
 
 ```powershell
-git clone https://github.com/angc-labs/CC2019-lab02.git
-cd CC2019-lab02
+git clone git@github.com:JosekingUVG/lab3TeoriaCC.git
+cd ~/lab3TeoriaCC/CC2019-lab02
 ```
 
-- Instalacion de uv en terminal
+2. Crea el entorno virtual si no existe:
 
 ```powershell
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+python -m venv .venv
 ```
 
-- Activación del entorno virtual
+3. Activa el entorno virtual:
 
-```bash
-uv venv
-.venv/Scripts/activate.bat
+```powershell
+.\.venv\Scripts\Activate.ps1
 ```
 
-- Ejecucion del inciso 3
+4. Instala dependencias desde `requirements.txt`:
 
-```bash
+```powershell
+pip install -r requirements.txt
+```
+
+5. Ejecuta el inciso deseado:
+
+```powershell
 python inciso_3.py
-```
-
-- Ejecucion del inciso 4
-
-```bash
 python inciso_4.py
 ```
 
+6. Cuando termines, desactiva el entorno:
+
+```powershell
+deactivate
+```
+
+### WSL
+
+Si el entorno `.venv` ya existe, abre WSL y ejecuta:
+
+```bash
+cd ~/lab3TeoriaCC/CC2019-lab02
+source .venv/bin/activate
+```
+
+Deberías ver algo como:
+
+```bash
+(.venv) username@username:~/lab3TeoriaCC/CC2019-lab02$
+```
+
+Ahora puedes ejecutar normalmente:
+
+```bash
+python inciso_1.py
+```
+
+Puedes comprobar qué Python está usando:
+
+```bash
+which python
+```
+
+Debería apuntar a algo parecido a:
+
+```bash
+/home/username/lab3TeoriaCC/CC2019-lab02/.venv/bin/python
+```
+
+Cuando termines:
+
+```bash
+deactivate
+```
+
+### Si estás creando el entorno desde cero en WSL
+
+```bash
+cd ~/lab3TeoriaCC/CC2019-lab02
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+Después ejecuta:
+
+```bash
+python inciso_1.py
+```
+
+Si agregas dependencias nuevas, guarda las librerías instaladas en `requirements.txt`:
+
+```bash
+pip freeze > requirements.txt
+```
+
+Así, al clonar el proyecto en otra máquina, basta con:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+Una regla práctica: cuando veas `(.venv)` al inicio de tu terminal, estás trabajando dentro del entorno virtual; si no aparece, ejecuta `source .venv/bin/activate`.
 
 ## Descripción general
 

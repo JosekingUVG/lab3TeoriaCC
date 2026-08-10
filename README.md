@@ -107,38 +107,30 @@ python inciso_2.py
 
 Una regla práctica: cuando veas `(.venv)` al inicio de tu terminal, estás trabajando dentro del entorno virtual; si no aparece, ejecuta `source .venv/bin/activate`.
 
-## Descripción general
+## Resultados de los ejemplos: 
 
-Implementacion del algoritmo de Shunting Yard para convertir expresiones desde notación infix a notación postfix y, luego, evaluarlas. La idea central es transformar una expresión como `3 * (4 + 5)` en una forma equivalente más fácil de procesar por una máquina, por ejemplo `3 4 5 + *`.
+```
+expressions = [
+    "(a*|b*)+",
+    "((s|a)|b*)*",
+    "(a|b)*.a.b.b.(a|b)*",
+    "0?.(1?)?.0*"
+]
+```
 
-El algoritmo usa una pila para organizar operadores mientras se recorre la expresión de izquierda a derecha. Gracias a esta estructura, se preservan las reglas de precedencia y asociatividad sin necesidad de usar recursión ni evaluar la expresión de forma ambigua.
-
-## Cómo funciona el algoritmo
-
-El proceso se realiza en tres etapas principales:
-
-1. Tokenización
-   - La entrada se separa en tokens, como números, operadores y paréntesis.
-   - En este proyecto, la tokenización se realiza en el módulo de tokenización para preparar la expresión para el algoritmo.
-
-2. Conversión de infix a postfix
-   - Se recorre la expresión de izquierda a derecha.
-   - Si el token es un operando, se envía directamente a la salida.
-   - Si es un paréntesis de apertura, se apila.
-   - Si es un paréntesis de cierre, se desapilan los operadores hasta encontrar el paréntesis de apertura.
-   - Si es un operador, se comparan sus prioridades con las del operador que está en la cima de la pila.
-   - Cuando el operador entrante tiene mayor precedencia, o igual precedencia y corresponde a una operación asociativa por la derecha, se apila.
-   - Si tiene menor precedencia, o igual precedencia pero es asociativa por la izquierda, se desapilan operadores hasta que sea posible apilar el nuevo operador.
-   - Al finalizar, se vacía la pila de operadores y se agregan al resultado final.
-
-3. Evaluación de la expresión postfix
-   - Una vez obtenida la notación postfix, se recorre nuevamente para evaluar la expresión.
-   - Cada vez que aparece un operador, se toman los dos valores más recientes de la pila, se aplica la operación y el resultado se vuelve a apilar.
-   - Al final queda un único valor, que es el resultado de la expresión original.
+| Syntax_Tree | AFD |
+| :---: | :---: |
+| ![Syntax Tree 1](./syntax_tree1.png) | ![AFD 1](./afd1.png) |
+| ![Syntax Tree 2](./syntax_tree2.png) | ![AFD 2](./afd2.png) |
+| ![Syntax Tree 3](./syntax_tree3.png) | ![AFD 3](./afd3.png) |
+| ![Syntax Tree 4](./syntax_tree4.png) | ![AFD 4](./afd4.png) |
+| :---: | :---: |
 
 
 
-## Referencia utilizada
+## Referencias utilizadas
+
+Gálvez P., T. (2026). Construcción directa de AFD [Material de clase]. Canvas, Universidad del Valle de Guatemala.  
 
 https://mathcenter.oxford.emory.edu/site/cs171/shuntingYardAlgorithm/
     
